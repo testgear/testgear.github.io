@@ -218,8 +218,9 @@ em {
 }
 
 table {
-  width: 100%;
-  border: 1px solid #ebebeb;
+  width: 60%;
+  border: 0px solid #ebebeb;
+  margin-left: 50px
 }
 
 th {
@@ -227,8 +228,8 @@ th {
 }
 
 td {
-  border: 1px solid #ebebeb;
-  text-align: center; 
+  border: 0px solid #ebebeb;
+  text-align: left;
   font-weight: 300;
 }
 
