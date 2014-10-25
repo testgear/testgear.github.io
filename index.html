@@ -7,9 +7,22 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <script type="text/javascript" src="javascripts/highslide/highslide.packed.js"></script>
+    <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide.css" />
+
+    <script type="text/javascript">
+    // override Highslide settings here
+    // instead of editing the highslide.js file
+    hs.graphicsDir = 'images/highslide/graphics/';
+    hs.wrapperClassName = 'wide-border';
+    hs.showCredits = false;
+    </script>
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <title>Test Gear</title>
   </head>
 
@@ -29,14 +42,14 @@
         <hr>
 
         <section id="main_content">
-          <h3>
-<a name="what-is" class="anchor" href="#what-is"><span class="octicon octicon-link"></span></a>What is Test Gear?</h3>
+          <h2>
+<a name="what-is" class="anchor" href="#what-is"><span class="octicon octicon-link"></span></a>What is Test Gear?</h2>
 
 <p>Test Gear is a modern lightweight hardware test automation framework which
 can be used for production line testing and prototype testing.</p>
 
-<h3>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
+<h2>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
 
 <p>Test Gear consists of the following four components:</p>
 
@@ -67,6 +80,14 @@ can be used for production line testing and prototype testing.</p>
 
 <p>The control application runs lua test scripts and uses the client library to
 communicate with servers hosting various test plugins.</p>
+
+<p>
+<div>
+<a href="images/testgear-overview.svg" class="highslide" onclick="return hs.expand(this)">
+<img src="images/testgear-overview-thumbnail.png" alt="Test Gear overview" title="Click to enlarge" width="560" /></a>
+<div class="highslide-caption">Test Gear system overview.</div>
+</div>
+</p>
 
 <p><b>Available plugins:</b></p>
 <p>
@@ -188,8 +209,8 @@ systems.</p>
 instruments, etc.) using custom APIs can be added by writing plugins following
 the Test Gear plugin model.</p>
 
-<h3>
-<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h3>
+<h2>
+<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
 
 <p>Test Gear is still in development - there are no official release tarballs
 available yet.</p>
@@ -200,18 +221,18 @@ available yet.</p>
 <b>experimental</b>, and a playground for testing design ideas to obtain best
 possible test creation and execution flow.</p>
 
-<h3>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h3>
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>All four Test Gear components are open source and released under the BSD-3
 license, commonly known as the 3-clause (or "modified") BSD license.</p>
 
-<p>Note: testgearctl comes bundled with <a href =http://www.lua.org>lua</a> and
+<p><b>Note:</b> testgearctl comes bundled with <a href =http://www.lua.org>lua</a> and
 <a href="http://www.nongnu.org/techne/lua/luaprompt">luaprompt</a> which are
 both released under the MIT license.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<h2>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h2>
 
 <p>Submit bug reports and feature requests via <a href="https://github.com/testgear">github</a>.</p>
         </section>
