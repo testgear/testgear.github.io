@@ -51,7 +51,7 @@ can be used for production line testing and prototype testing.</p>
 <h2>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
 
-<p>Test Gear consists of the following four components:</p>
+<p>Test Gear includes the following four components:</p>
 
 <p>
 <table border="0">
@@ -73,13 +73,14 @@ can be used for production line testing and prototype testing.</p>
   <tr>
     <td>&bull; testgear-plugins</td>
     <td>-</td>
-    <td>Test plugins</td>
+    <td>Test and interface plugins</td>
   </tr>
 </table>
 </p>
 
-<p>The control application runs lua test scripts and uses the client library to
-communicate with servers hosting various test plugins.</p>
+<p>The control application runs test scripts written in Lua and uses the client
+library to communicate with servers featuring various test and interface
+plugins. The end result is a test log describing passed and failed tests.</p>
 
 <p>
 <div>
@@ -201,9 +202,9 @@ communicate with servers hosting various test plugins.</p>
 </table>
 </p>
 
-<p>The plugins above are generic plugins for testing/interfacing hardware
-available using popular GNU/Linux APIs. They should work on most GNU/Linux
-systems.</p>
+<p>The plugins above are generic plugins for testing or interfacing hardware
+(devices, instruments, etc.) using popular GNU/Linux APIs. They are made to
+work on most modern GNU/Linux systems.</p>
 
 <p>Custom plugins for testing/interfacing custom hardware (devices,
 instruments, etc.) using custom APIs can be added by writing plugins following
@@ -227,14 +228,13 @@ possible test creation and execution flow.</p>
 <p>All four Test Gear components are open source and released under the BSD-3
 license, commonly known as the 3-clause (or "modified") BSD license.</p>
 
-<p><b>Note:</b> testgearctl comes bundled with <a href =http://www.lua.org>lua</a> and
-<a href="http://www.nongnu.org/techne/lua/luaprompt">luaprompt</a> which are
-both released under the MIT license.</p>
+<p><b>Note:</b> testgearctl is bundled with <a href =http://www.lua.org>lua</a> and
+<a href="http://www.nongnu.org/techne/lua/luaprompt">luaprompt</a> released under the MIT license.</p>
 
 <h2>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h2>
 
-<p>Submit bug reports and feature requests via <a href="https://github.com/testgear">github</a>.</p>
+<p>Submit bug reports and feature requests on <a href="https://github.com/testgear">github</a>.</p>
         </section>
 
         <footer>
