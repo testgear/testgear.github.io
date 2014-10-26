@@ -197,7 +197,7 @@
        <g id="id9">
         <path fill="rgb(255,255,255)" stroke="none" d="M 31020,15699 L 28988,15699 28988,13159 33052,13159 33052,15699 31020,15699 Z"/>
         <path fill="none" stroke="rgb(0,0,0)" d="M 31020,15699 L 28988,15699 28988,13159 33052,13159 33052,15699 31020,15699 Z"/>
-        <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="400"><tspan class="TextPosition" x="30133" y="14336"><tspan fill="rgb(0,0,0)" stroke="none">testgeard</tspan></tspan></tspan><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="400"><tspan class="TextPosition" x="29157" y="14814"><tspan fill="rgb(0,0,0)" stroke="none">(instrument plugins)</tspan></tspan></tspan></text>
+        <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="400"><tspan class="TextPosition" x="30133" y="14336"><tspan fill="rgb(0,0,0)" stroke="none">testgeard</tspan></tspan></tspan><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="423px" font-weight="400"><tspan class="TextPosition" x="29333" y="14814"><tspan fill="rgb(0,0,0)" stroke="none">(interface plugins)</tspan></tspan></tspan></text>
        </g>
       </g>
       <g class="com.sun.star.drawing.CustomShape">
