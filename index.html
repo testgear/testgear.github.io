@@ -48,6 +48,10 @@
 <p>Test Gear is a modern lightweight hardware test automation framework which
 can be used for production line testing and prototype testing.</p>
 
+<p>For now, Test Gear is to be considered work in progress,
+<b>experimental</b>, and a playground for testing design ideas to obtain best
+possible test creation and execution flow.</p>
+
 <h2>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
 
@@ -80,7 +84,7 @@ can be used for production line testing and prototype testing.</p>
 
 <p>The control application runs test scripts written in Lua and uses the client
 library to communicate with servers featuring various test and interface
-plugins. The end result is a test log describing passed and failed tests.</p>
+plugins. The end result is a test log listing passed and failed tests.</p>
 
 <p>
 <div>
@@ -162,7 +166,7 @@ plugins. The end result is a test log describing passed and failed tests.</p>
   <tr>
     <td>&bull; camera</td>
     <td>-</td>
-    <td>Camera interface test</td>
+    <td>Camera test</td>
   </tr>
   <tr>
     <td>&bull; wifi</td>
@@ -204,14 +208,15 @@ plugins. The end result is a test log describing passed and failed tests.</p>
 
 <p>The plugins listed above are generic plugins for testing or interfacing
 various hardware (devices, instruments, peripherals, etc.) using popular
-GNU/Linux APIs. They should work on most modern GNU/Linux systems.</p>
+GNU/Linux APIs. They are made to work on most modern GNU/Linux systems.</p>
 
-<p>Custom plugins for testing or interfacing custom hardware using custom APIs
-can easily be added by writing plugins following the Test Gear plugin model.
-You decide which license you want to apply to your plugin and whether you will
-make it publicly available or not. However, it is strongly encouraged to make
-your plugin open source when possible so that everyone can benefit from common
-work and avoid duplicate work.</p>
+<p>Creating plugins for testing or interfacing custom hardware using custom
+APIs can easily be added by writing plugins following the Test Gear plugin
+model. You decide which license you want to apply to your plugins and whether
+you will make them publicly available or not. However, it is strongly
+encouraged to make your plugins open source when possible so that everyone can
+benefit from common work and, most important, avoid or minimize duplicate
+work.</p>
 
 <h2>
 <a name="platform-support" class="anchor" href="#platform-support"><span class="octicon octicon-link"></span></a>Platform Support</h2>
@@ -220,6 +225,11 @@ However, in the future it is planned to support microcontoller systems and even
 embedding into bootloaders such a u-boot (which is useful for complete memory
 testing in particular).</p>
 
+<p>The Test Gear control client and control application is currently a very
+simple command line application for GNU/Linux systems only. In the future, the
+plan is to add a user friendly graphical control client with multi-platform
+support.</p>
+
 <h2>
 <a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
 
@@ -227,10 +237,6 @@ testing in particular).</p>
 available yet.</p>
 
 <p>The latest development source code is available on <a href="http://github.com/testgear">github</a></p>
-
-<p>For now, Test Gear is to be considered work in progress,
-<b>experimental</b>, and a playground for testing design ideas to obtain best
-possible test creation and execution flow.</p>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
