@@ -27,29 +27,30 @@
         $.getJSON('https://api.github.com/orgs/testgear/events?callback=?', function (json) {
                 $('#commit-history-json tr').remove();
                 $.each(json.data, function (i, data) {
-
                     if ((data.type == "PushEvent") && (data.repo.name != "testgear/testgear.github.io")) {
-                       var $col = $('<tr style="border-bottom: 1px solid #999; text-shadow: none" />');
-                       var $committer = $('<td valign="top" style="white-space: nowrap;" />').html(data.payload.commits[0].author.name);
+                       $.each(data.payload.commits, function (j, commit) {
+                          var $col = $('<tr style="border-bottom: 1px solid #999; text-shadow: none" />');
+                          var $committer = $('<td valign="top" style="white-space: nowrap;" />').html(commit.author.name);
 
-                       // Only present title of commit message
-                       var msg = data.payload.commits[0].message;
-                       var index = msg.indexOf("\n");
-                       if (index != -1)
-                          msg = msg.slice(0, index);
+                          // Only present title of commit message
+                          var msg = commit.message;
+                          var index = msg.indexOf("\n");
+                          if (index != -1)
+                             msg = msg.slice(0, index);
 
-                       var $link = $('<a style="font-weight: bold" />').attr('href', 'https://github.com/' + data.repo.name + '/commit/' + data.payload.commits[0].sha).html(msg);
-                       var $url = $('<td valign="top" style="padding: 0 10px"/>').append($link);
-                       var $date = $('<td style="text-align: right; white-space: nowrap;" />').html($.format.date(data.created_at, "dd.MM.yy HH:MM"));
+                          var $link = $('<a style="font-weight: bold" />').attr('href', 'https://github.com/' + data.repo.name + '/commit/' + commit.sha).html(msg);
+                          var $url = $('<td valign="top" style="padding: 0 10px"/>').append($link);
+                          var $date = $('<td style="text-align: right; white-space: nowrap;" />').html($.format.date(data.created_at, "dd.MM.yy HH:MM"));
 
-                       $col.append($committer);
-                       $col.append($url);
-                       $col.append($date);
+                          $col.append($committer);
+                          $col.append($url);
+                          $col.append($date);
 
-                       $('#commit-history-json').append($col);
-                    }
-                    });
-                });
+                          $('#commit-history-json').append($col);
+                       });
+                  }
+            });
+        });
     }
     commit_history();
     </script>
