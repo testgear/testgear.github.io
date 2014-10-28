@@ -7,9 +7,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-    <script type="text/javascript" src="javascripts/highslide/highslide.packed.js"></script>
     <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide.css" />
+
+    <script src="javascripts/highslide/highslide.packed.js" type="text/javascript"></script>
+    <script src="javascripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="javascripts/jquery.timeago.js" type="text/javascript"></script>
+    <script src="javascripts/jquery-dateFormat.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
     // override Highslide settings here
@@ -17,6 +20,38 @@
     hs.graphicsDir = 'images/highslide/graphics/';
     hs.wrapperClassName = 'wide-border';
     hs.showCredits = false;
+    </script>
+
+    <script type="text/javascript">
+    function commit_history() {
+        $.getJSON('https://api.github.com/orgs/testgear/events?callback=?', function (json) {
+                $('#commit-history-json tr').remove();
+                $.each(json.data, function (i, data) {
+
+                    if ((data.type == "PushEvent") && (data.repo.name != "testgear/testgear.github.io")) {
+                       var $col = $('<tr style="border-bottom: 1px solid #999; text-shadow: none" />');
+                       var $committer = $('<td valign="top" style="white-space: nowrap;" />').html(data.payload.commits[0].author.name);
+
+                       // Only present title of commit message
+                       var msg = data.payload.commits[0].message;
+                       var index = msg.indexOf("\n");
+                       if (index != -1)
+                          msg = msg.slice(0, index);
+
+                       var $link = $('<a style="font-weight: bold" />').attr('href', 'https://github.com/' + data.repo.name + '/commit/' + data.payload.commits[0].sha).html(msg);
+                       var $url = $('<td valign="top" style="padding: 0 10px"/>').append($link);
+                       var $date = $('<td style="text-align: right; white-space: nowrap;" />').html($.format.date(data.created_at, "dd.MM.yy HH:MM"));
+
+                       $col.append($committer);
+                       $col.append($url);
+                       $col.append($date);
+
+                       $('#commit-history-json').append($col);
+                    }
+                    });
+                });
+    }
+    commit_history();
     </script>
 
     <!--[if lt IE 9]>
@@ -250,13 +285,31 @@ license, commonly known as the 3-clause (or "modified") BSD license.</p>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h2>
 
 <p>Submit bug reports and feature requests on <a href="https://github.com/testgear">github</a>.</p>
+
+<h2>Github Commit History</h2>
+
+<p>
+<table class="commit-history">
+<thead>
+  <tr>
+    <th style="width: 110px">Committer</th>
+    <th>Message</th>
+    <th style="width: 100px; text-align: right">Date</th>
+  </tr>
+</thead>
+<tbody id="commit-history-json">
+  <tr>
+    <td colspan="3" style="text-align: center">Loading...</td>
+  </tr>
+</tbody>
+</table>
+</p>
         </section>
 
         <footer>
           Hosted by <a href="http://www.github.com">GitHub</a>.
         </footer>
 
-        
       </div>
     </div>
   </body>

@@ -226,6 +226,34 @@ table {
   margin-left: 50px
 }
 
+table.commit-history {
+  width: 100%;
+  border: 0px;
+  color: #000000;
+  font-weight: 0;
+  font-size: 0.9em;
+/*  line-height: 1.0em;*/
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+table.commit-history a {
+  color: #C47529;
+  font-weight: 0;
+}
+
+table.commit-history tr {
+  border: 0px;
+  font-weight: 0;
+  text-align: left;
+}
+
+table.commit-history td {
+  padding: 0;
+  border: 0px;
+  font-weight: 0;
+}
+
 th {
   font-weight: 500;
 }
