@@ -38,11 +38,19 @@
                           if (index != -1)
                              msg = msg.slice(0, index);
 
+                          // Extract repository short name
+                          repo = data.repo.name;
+                          index = repo.indexOf("/");
+                          if (index != -1)
+                             repo = repo.slice(index + 1);
+                          var $repo_shortname = $('<td valign="top" style="white-space: nowrap;" />').html(repo);
+
                           var $link = $('<a style="font-weight: bold" />').attr('href', 'https://github.com/' + data.repo.name + '/commit/' + commit.sha).html(msg);
-                          var $url = $('<td valign="top" style="padding: 0 10px"/>').append($link);
+                          var $url = $('<td valign="top" style="padding: 0 0px"/>').append($link);
                           var $date = $('<td style="text-align: right; white-space: nowrap;" />').html($.format.date(data.created_at, "dd.MM.yy HH:MM"));
 
                           $col.append($committer);
+                          $col.append($repo_shortname);
                           $col.append($url);
                           $col.append($date);
 
@@ -293,14 +301,15 @@ license, commonly known as the 3-clause (or "modified") BSD license.</p>
 <table class="commit-history">
 <thead>
   <tr>
-    <th style="width: 110px">Committer</th>
-    <th>Message</th>
-    <th style="width: 100px; text-align: right">Date</th>
+    <th style="width: 95px; font-weight: bold;" >Committer</th>
+    <th style="width: 115px; font-weight: bold;">Repository</th>
+    <th style="font-weight: bold;">Message</th>
+    <th style="width: 100px; font-weight: bold; text-align: right">Date</th>
   </tr>
 </thead>
 <tbody id="commit-history-json">
   <tr>
-    <td colspan="3" style="text-align: center">Loading...</td>
+    <td colspan="4" style="text-align: center">Loading...</td>
   </tr>
 </tbody>
 </table>
