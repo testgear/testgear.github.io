@@ -24,7 +24,7 @@
 
     <script type="text/javascript">
     function commit_history() {
-        $.getJSON('https://api.github.com/orgs/testgear/events?callback=?', function (json) {
+        $.getJSON('https://api.github.com/orgs/testgear/events?client_id=7b8ca279fdd617dc9650&client_secret=f3e6991a182b4bf5b193fb497d8bb5ad854d0c7b&callback=?', function (json) {
                 $('#commit-history-json tr').remove();
                 $.each(json.data, function (i, data) {
                     if ((data.type == "PushEvent") && (data.repo.name != "testgear/testgear.github.io")) {
