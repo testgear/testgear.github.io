@@ -1,326 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide.css" />
+    <title>test gear</title>
+    <!-- <link rel="icon" href="io.github.lxi-tools.lxi-gui.png"> -->
 
-    <script src="javascripts/highslide/highslide.packed.js" type="text/javascript"></script>
-    <script src="javascripts/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="javascripts/jquery.timeago.js" type="text/javascript"></script>
-    <script src="javascripts/jquery-dateFormat.min.js" type="text/javascript"></script>
+    <meta http-equiv="Refresh" content="0; url='https://github.com/testgear'" />
 
-    <script type="text/javascript">
-    // override Highslide settings here
-    // instead of editing the highslide.js file
-    hs.graphicsDir = 'images/highslide/graphics/';
-    hs.wrapperClassName = 'wide-border';
-    hs.showCredits = false;
-    </script>
+  <style>
+a:link {
+  color: darkgray;
+  background-color: transparent;
+  text-decoration: none;
+}
 
-    <script type="text/javascript">
-    function commit_history() {
-        $.getJSON('https://api.github.com/orgs/testgear/events?client_id=7b8ca279fdd617dc9650&client_secret=f3e6991a182b4bf5b193fb497d8bb5ad854d0c7b&callback=?', function (json) {
-                $('#commit-history-json tr').remove();
-                $.each(json.data, function (i, data) {
-                    if ((data.type == "PushEvent") && (data.repo.name != "testgear/testgear.github.io")) {
-                       $.each(data.payload.commits, function (j, commit) {
-                          var $col = $('<tr style="border-bottom: 1px solid #999; text-shadow: none" />');
-                          var $committer = $('<td valign="top" style="white-space: nowrap;" />').html(commit.author.name);
+a:visited {
+  color: darkgray;
+  background-color: transparent;
+  text-decoration: none;
+}
 
-                          // Only present title of commit message
-                          var msg = commit.message;
-                          var index = msg.indexOf("\n");
-                          if (index != -1)
-                             msg = msg.slice(0, index);
+a:hover {
+  color: darkgray;
+  background-color: transparent;
+  text-decoration: none;
+}
 
-                          // Extract repository short name
-                          repo = data.repo.name;
-                          index = repo.indexOf("/");
-                          if (index != -1)
-                             repo = repo.slice(index + 1);
-                          var $repo_shortname = $('<td valign="top" style="white-space: nowrap;" />').html(repo);
-
-                          var $link = $('<a style="font-weight: bold" />').attr('href', 'https://github.com/' + data.repo.name + '/commit/' + commit.sha).html(msg);
-                          var $url = $('<td valign="top" style="padding: 0 0px"/>').append($link);
-                          var $date = $('<td style="text-align: right; white-space: nowrap;" />').html($.format.date(data.created_at, "dd.MM.yy HH:MM"));
-
-                          $col.append($committer);
-                          $col.append($repo_shortname);
-                          $col.append($url);
-                          $col.append($date);
-
-                          $('#commit-history-json').append($col);
-                       });
-                  }
-            });
-        });
-    }
-    commit_history();
-    </script>
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <title>Test Gear</title>
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+  </style>
   </head>
 
-  <body>
-    <div id="container">
-      <div class="inner">
+  <body style="background-color:#202124">
+    <!-- <img src="io.github.lxi-tools.lxi-gui.png"> -->
+    <p style="font-family:Arial;color:gray">
+    Test Gear is a modern lightweight hardware test automation framework which
+    can be used for production line testing and prototype testing. </p>
 
-        <header>
-          <h1>Test Gear</h1>
-          <h2>A lightweight hardware test automation framework</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/testgear" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h2>
-<a name="what-is" class="anchor" href="#what-is"><span class="octicon octicon-link"></span></a>What is Test Gear?</h2>
-
-<p>Test Gear is a modern lightweight hardware test automation framework which
-can be used for production line testing and prototype testing.</p>
-
-<p>For now, Test Gear is to be considered work in progress,
-<b>experimental</b>, and a playground for testing design ideas to obtain best
-possible test creation and execution flow.</p>
-
-<h2>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
-
-<p>Test Gear includes the following four components:</p>
-
-<p>
-<table border="0">
-  <tr>
-    <td>&bull; testgeard</td>
-    <td>- &nbsp; &nbsp;</td>
-    <td>Server</td>
-  </tr>
-  <tr>
-    <td>&bull; libtestgear</td>
-    <td>-</td>
-    <td>Client library</td>
-  </tr>
-  <tr>
-    <td>&bull; testgearctl</td>
-    <td>-</td>
-    <td>Control application</td>
-  </tr>
-  <tr>
-    <td>&bull; testgear-plugins</td>
-    <td>-</td>
-    <td>Test and interface plugins</td>
-  </tr>
-</table>
-</p>
-
-<p>The control application runs test scripts written in Lua and uses the client
-library to communicate with servers featuring various test and interface
-plugins. The end result is a test log listing passed and failed tests.</p>
-
-<p>
-<div>
-<a href="images/testgear-overview.png" class="highslide" onclick="return hs.expand(this)">
-<img src="images/testgear-overview-thumbnail.png" alt="Test Gear overview" title="Click to enlarge" width="560" /></a>
-<div class="highslide-caption">Test Gear system overview.</div>
-</div>
-</p>
-
-<p><b>Available plugins:</b></p>
-<p>
-<table border="0">
-  <tr>
-    <td>&bull; fb</td>
-    <td>- &nbsp; &nbsp;</td>
-    <td>Framebuffer test</td>
-  </tr>
-  <tr>
-    <td>&bull; audio</td>
-    <td>-</td>
-    <td>Audio I/O test (ALSA)</td>
-  </tr>
-  <tr>
-    <td>&bull; shell</td>
-    <td>-</td>
-    <td>Shell interface</td>
-  </tr>
-  <tr>
-    <td>&bull; dummy</td>
-    <td>-</td>
-    <td>Dummy test</td>
-  </tr>
-  <tr>
-    <td>&bull; cpu</td>
-    <td>-</td>
-    <td>CPU stress test</td>
-  </tr>
-  <tr>
-    <td>&bull; keyboard</td>
-    <td>-</td>
-    <td>Keyboard input test</td>
-  </tr>
-  <tr>
-    <td>&bull; usb</td>
-    <td>-</td>
-    <td>USB I/O test (loopback)</td>
-  </tr>
-</table>
-</p>
-
-<p><b>Planned plugins (TODO):</b></p>
-<p>
-<table border="0">
-  <tr>
-    <td>&bull; kmsdrm</td>
-    <td>- &nbsp; &nbsp;</td>
-    <td>KMS/DRM performance test</td>
-  </tr>
-  <tr>
-    <td>&bull; touch</td>
-    <td>-</td>
-    <td>Touch input test</td>
-  </tr>
-  <tr>
-    <td>&bull; mouse</td>
-    <td>-</td>
-    <td>Mouse input test</td>
-  </tr>
-  <tr>
-    <td>&bull; storage</td>
-    <td>-</td>
-    <td>Storage I/O performance test</td>
-  </tr>
-  <tr>
-    <td>&bull; memory</td>
-    <td>-</td>
-    <td>Memory I/O performance test</td>
-  </tr>
-  <tr>
-    <td>&bull; camera</td>
-    <td>-</td>
-    <td>Camera test</td>
-  </tr>
-  <tr>
-    <td>&bull; wifi</td>
-    <td>-</td>
-    <td>Wifi 802.11 test</td>
-  </tr>
-  <tr>
-    <td>&bull; network</td>
-    <td>-</td>
-    <td>Network test</td>
-  </tr>
-  <tr>
-    <td>&bull; bluetooth</td>
-    <td>-</td>
-    <td>Bluetooth test</td>
-  </tr>
-  <tr>
-    <td>&bull; gpio</td>
-    <td>-</td>
-    <td>GPIO interface</td>
-  </tr>
-  <tr>
-    <td>&bull; i2c</td>
-    <td>-</td>
-    <td>I2C interface</td>
-  </tr>
-  <tr>
-    <td>&bull; lxi</td>
-    <td>-</td>
-    <td>LXI class C interface</td>
-  </tr>
-  <tr>
-    <td>&bull; gpib</td>
-    <td>-</td>
-    <td>GPIB interface</td>
-  </tr>
-</table>
-</p>
-
-<p>The plugins listed above are generic plugins for testing or interfacing
-various hardware (devices, instruments, peripherals, etc.) using popular
-GNU/Linux APIs. They are made to work on most modern GNU/Linux systems.</p>
-
-<p>Custom plugins for testing or interfacing custom hardware using custom APIs
-can easily be added by writing plugins following the Test Gear plugin model.
-You decide which license you want to apply to your plugins and whether you will
-make them publicly available or not. However, it is strongly encouraged to make
-your plugins open source when possible so that everyone can benefit from common
-work and, most importantly, avoid or minimize duplicate work.</p>
-
-<h2>
-<a name="platform-support" class="anchor" href="#platform-support"><span class="octicon octicon-link"></span></a>Platform Support</h2>
-<p> The Test Gear server (testgeard) currently supports GNU/Linux systems only.
-However, in the future it is planned to support microcontoller systems and even
-embedding into bootloaders such a u-boot (which is useful for complete memory
-testing in particular).</p>
-
-<p>The Test Gear control client and control application is currently a very
-simple command line application for GNU/Linux systems only. In the future, the
-plan is to add a user friendly graphical control client with multi-platform
-support.</p>
-
-<h2>
-<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
-
-<p>Test Gear is still in development - there are no official release tarballs
-available yet.</p>
-
-<p>The latest development source code is available on <a href="http://github.com/testgear">github</a></p>
-
-<h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>All four Test Gear components are open source and released under the BSD-3
-license, commonly known as the 3-clause (or "modified") BSD license.</p>
-
-<p><b>Note:</b> testgearctl is bundled with <a href =http://www.lua.org>lua</a> and
-<a href="http://www.nongnu.org/techne/lua/luaprompt">luaprompt</a> released under the MIT license.</p>
-
-<h2>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h2>
-
-<p>Submit bug reports and feature requests on <a href="https://github.com/testgear">github</a>.</p>
-
-<h2>Github Commit History</h2>
-
-<p>
-<table class="commit-history">
-<thead>
-  <tr>
-    <th style="width: 95px; font-weight: bold;" >Committer</th>
-    <th style="width: 115px; font-weight: bold;">Repository</th>
-    <th style="font-weight: bold;">Message</th>
-    <th style="width: 100px; font-weight: bold; text-align: right">Date</th>
-  </tr>
-</thead>
-<tbody id="commit-history-json">
-  <tr>
-    <td colspan="4" style="text-align: center">Loading...</td>
-  </tr>
-</tbody>
-</table>
-</p>
-        </section>
-
-        <footer>
-          Hosted by <a href="http://www.github.com">GitHub</a>.
-        </footer>
-
-      </div>
-    </div>
+    <p style="font-family:Arial;color:gray">Visit <a href="https://github.com/testgear">Github</a> for more details</p>
   </body>
 </html>
